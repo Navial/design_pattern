@@ -1,3 +1,5 @@
+// DECORATOR
+
 public class Counter implements Strategy {
 
     private int counter;
