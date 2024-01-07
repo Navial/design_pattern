@@ -13,12 +13,11 @@ public class Counter implements IStrategy{
     }
 
     public boolean check(String mot){
-        if(this.strategy.check(mot)){
-          System.out.println("Counter ++" );
-            this.compte++;
-            return true;
-        }
-        return false;
+      boolean result = this.strategy.check(mot);
+      if (result) {
+        this.compte++;
+      }
+      return result; // Retourne le résultat réel de la stratégie décorée
     }
 
     public int getCompte(){
@@ -27,7 +26,7 @@ public class Counter implements IStrategy{
 
   @Override
   public String getString() {
-    return getCompte() + " fois";
+    return strategy.getString() + ", appelé " + getCompte() + " fois";
   }
 
 }

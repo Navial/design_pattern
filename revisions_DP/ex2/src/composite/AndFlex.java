@@ -18,8 +18,8 @@ public class AndFlex implements IStrategy{
             if(!strategy.check(mot)){
                 return  false;
             }
-            this.compte++;
         }
+        this.compte++;
         return true;
     }
 
@@ -28,7 +28,12 @@ public class AndFlex implements IStrategy{
     }
 
     public String getString() {
-        return "AndFlex : " + getCompte() + " fois";
+        StringBuilder result = new StringBuilder("AndFlex: ");
+        for (IStrategy strategy : strategies) {
+            result.append(strategy.getString()).append("; ");
+        }
+        result.append("appelé ").append(getCompte()).append(" fois");
+        return result.toString();
     }
 
 }
